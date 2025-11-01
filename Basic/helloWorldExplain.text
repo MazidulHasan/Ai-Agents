@@ -1,0 +1,14 @@
+- First iport typeDict and stateGraph (1)
+- define "AgentState(typeDict)" with a message (Shared Data Structure)
+- create a node where it will be taking a state and outputting a state
+    - dock String: What that function actually does -> """ xx """
+    - Now update the message of shared data state
+- Create A stateGraph with Agent State with a veriable called graph
+- Then need to add node with 2 perameter
+    - Name of node
+    - Action of node
+- Then need to set entry and finish point
+- Then compile
+- Then display the graph
+- After the compile we can invoke anything in the graph
+- The get the result
