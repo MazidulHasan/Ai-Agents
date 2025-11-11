@@ -78,11 +78,12 @@ while user_input.lower() != "exit":
 
 
 # Define target folder and ensure it exists
-log_folder = os.path.join("Ai-Agents", "Agents")
+# log_folder = os.path.join("Ai-Agents", "Agents")
+log_folder = os.path.join("log")
 os.makedirs(log_folder, exist_ok=True)
 
 # Define full path for the log file
-log_path = os.path.join(log_folder, "logging.txt")
+log_path = os.path.join(log_folder, "logging_agent_bot.txt")
 
 # Save conversation to file
 with open(log_path, "w", encoding="utf-8") as file:

@@ -1,0 +1,6 @@
+Your Conversation Log:
+
+You: name?
+AI: I’m ChatGPT, an AI language model created by OpenAI.
+
+End of Conversation

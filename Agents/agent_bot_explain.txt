@@ -1,0 +1,80 @@
+┌───────────────┐
+│   User Input  │
+│ "Hello AI"    │
+└───────┬───────┘
+        │
+        ▼
+┌─────────────────────────┐
+│ conversation_history =  │
+│ [HumanMessage("Hello AI")] │
+└─────────┬──────────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│ agent.invoke({          │
+│   "messages": conversation_history │
+│ })                      │
+└─────────┬──────────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│ process(state)          │
+│                         │
+│ 1️⃣ Converts state["messages"] │
+│    to Groq format       │
+│ 2️⃣ Calls Groq API       │
+│    (streaming)          │
+│ 3️⃣ Collects AI reply    │
+│ 4️⃣ Appends AIMessage    │
+│    to state["messages"] │
+└─────────┬──────────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│ Updated conversation_history: │
+│ [HumanMessage("Hello AI"),   │
+│  AIMessage("Hi there!")]     │
+└─────────┬──────────────┘
+          │
+          ▼
+┌───────────────┐
+│ Next User Input│
+│ "How are you?" │
+└───────┬───────┘
+        │
+        ▼
+┌─────────────────────────┐
+│ conversation_history =  │
+│ [HumanMessage("Hello AI"),│
+│  AIMessage("Hi there!"),  │
+│  HumanMessage("How are you?")] │
+└─────────┬──────────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│ agent.invoke({          │
+│   "messages": conversation_history │
+│ })                      │
+└─────────┬──────────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│ process(state)          │
+│                         │
+│ 1️⃣ Reads all messages   │
+│ 2️⃣ Converts to Groq format │
+│ 3️⃣ Calls Groq API       │
+│ 4️⃣ Appends AIMessage    │
+└─────────┬──────────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│ Updated conversation_history: │
+│ [HumanMessage("Hello AI"),   │
+│  AIMessage("Hi there!"),     │
+│  HumanMessage("How are you?"),│
+│  AIMessage("I'm fine!")]     │
+└─────────┬──────────────┘
+          │
+          ▼
+     (Next Turn → Repeat)
